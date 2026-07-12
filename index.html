@@ -21,7 +21,9 @@
     body { display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 100vh; padding: 4rem 2rem; opacity: 0; animation: fadeIn 1.8s ease forwards; animation-delay: 0.2s; }
     @keyframes fadeIn { to { opacity: 1; } }
     .container { max-width: 560px; width: 100%; text-align: center; }
-    h1 { font-family: 'Jost', sans-serif; font-weight: 200; font-size: clamp(2rem, 6vw, 3.2rem); letter-spacing: 0.22em; text-transform: uppercase; color: #ffffff; margin-bottom: 3.5rem; animation: slideUp 1.4s ease forwards; animation-delay: 0.4s; opacity: 0; }
+    h1 { font-family: 'Jost', sans-serif; font-weight: 200; font-size: clamp(2rem, 6vw, 3.2rem); letter-spacing: 0.22em; text-transform: uppercase; color: #ffffff; margin-bottom: 1.2rem; animation: slideUp 1.4s ease forwards; animation-delay: 0.4s; opacity: 0; }
+    .role { font-family: 'Jost', sans-serif; font-weight: 300; font-size: clamp(0.85rem, 2vw, 1rem); letter-spacing: 0.16em; text-transform: uppercase; color: rgba(255,255,255,0.72); margin-bottom: 0.6rem; animation: slideUp 1.4s ease forwards; animation-delay: 0.55s; opacity: 0; }
+    .role-sub { font-family: 'Jost', sans-serif; font-weight: 300; font-size: 0.68rem; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(255,255,255,0.4); margin-bottom: 3rem; animation: slideUp 1.4s ease forwards; animation-delay: 0.62s; opacity: 0; }
     @keyframes slideUp { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: translateY(0); } }
     .divider { width: 32px; height: 0.5px; background: rgba(255,255,255,0.55); margin: 0 auto 3rem; animation: slideUp 1.4s ease forwards; animation-delay: 0.7s; opacity: 0; }
     .poem { font-family: 'Cormorant Garamond', Georgia, serif; font-weight: 300; font-size: clamp(1.05rem, 2.4vw, 1.25rem); color: rgba(255,255,255,0.75); text-align: center; animation: slideUp 1.4s ease forwards; animation-delay: 1s; opacity: 0; }
@@ -36,6 +38,8 @@ footer { z-index: 1; }</style>
 <body>
   <div class="container">
     <h1>Kyle Mason</h1>
+    <p class="role">Network &amp; Infrastructure Engineer</p>
+    <p class="role-sub">U.S. Marine Corps Aviator &nbsp;·&nbsp; CCNA in progress</p>
     <div class="divider"></div>
     <div class="poem">
       <p>Up, up the long, delirious, burning blue</p>
@@ -48,6 +52,7 @@ footer { z-index: 1; }</style>
     <p class="attribution">John Gillespie Magee Jr. &nbsp;·&nbsp; High Flight</p>
   </div>
   <footer>
+  <a href="https://github.com/machismo0311/Home-Lab" target="_blank" rel="noopener" style="display: block; color: rgba(255,255,255,0.5); text-decoration: none; letter-spacing: 0.14em; font-family: 'Jost', sans-serif; font-size: 0.62rem; text-transform: uppercase; margin-bottom: 1.2rem;">NETFRAME — Homelab &amp; Network-Engineering Portfolio ↗</a>
   <a href="mailto:kyle@kylemason.org" style="color: rgba(255,255,255,0.38); text-decoration: none; letter-spacing: 0.1em; font-family: 'Jost', sans-serif; font-size: 0.65rem; text-transform: uppercase; margin: 0 1rem;">Contact</a>
   <span style="color: rgba(255,255,255,0.18);">·</span>
   <a href="https://www.linkedin.com/in/kyle-m-468592bb/" target="_blank" style="color: rgba(255,255,255,0.38); text-decoration: none; letter-spacing: 0.1em; font-family: 'Jost', sans-serif; font-size: 0.65rem; text-transform: uppercase; margin: 0 1rem;">LinkedIn</a>
