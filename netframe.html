@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>NetFRAME · Kyle Mason</title>
+  <meta name="description" content="NetFRAME: a production-grade 7-node homelab. Network and infrastructure engineering portfolio by Kyle Mason." />
+  <meta property="og:title" content="NetFRAME · Kyle Mason" />
+  <meta property="og:description" content="A production-grade 7-node homelab. Network and infrastructure engineering portfolio." />
+  <meta property="og:url" content="https://kylemason.org/netframe.html" />
+  <meta property="og:type" content="website" />
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="NetFRAME · Kyle Mason" />
+  <meta name="twitter:description" content="A production-grade 7-node homelab. Network and infrastructure engineering portfolio." />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='18' fill='black'/><text x='50' y='72' text-anchor='middle' font-family='Georgia,serif' font-size='48' fill='white'>KM</text></svg>">
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400&family=Jost:wght@200;300;400&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --ink: #ffffff;
+      --t72: rgba(255,255,255,0.72);
+      --t55: rgba(255,255,255,0.55);
+      --t40: rgba(255,255,255,0.40);
+      --t22: rgba(255,255,255,0.22);
+      --t14: rgba(255,255,255,0.14);
+      --serif: 'Cormorant Garamond', Georgia, 'Times New Roman', serif;
+      --sans: 'Jost', 'Century Gothic', 'Helvetica Neue', Arial, sans-serif;
+    }
+    html, body { background: #000000; color: var(--ink); }
+    body {
+      font-family: var(--serif);
+      min-height: 100vh;
+      padding: clamp(3.5rem, 10vw, 7rem) 1.6rem clamp(3rem, 8vw, 5rem);
+      display: flex; justify-content: center;
+      opacity: 0; animation: fadeIn 1.8s ease forwards; animation-delay: 0.15s;
+    }
+    @keyframes fadeIn { to { opacity: 1; } }
+    @keyframes slideUp { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: translateY(0); } }
+
+    canvas#stars { position: fixed; inset: 0; width: 100%; height: 100%; z-index: 0; pointer-events: none; }
+    .wrap { position: relative; z-index: 1; width: 100%; max-width: 640px; }
+
+    .reveal { opacity: 0; animation: slideUp 1.3s ease forwards; }
+
+    .eyebrow { font-family: var(--sans); font-weight: 300; font-size: 0.66rem; letter-spacing: 0.28em; text-transform: uppercase; color: var(--t40); }
+
+    .hero { text-align: center; margin-bottom: clamp(3rem, 8vw, 4.5rem); }
+    .hero .eyebrow { margin-bottom: 1.4rem; }
+    h1 {
+      font-family: var(--sans); font-weight: 200; text-transform: uppercase;
+      font-size: clamp(2.4rem, 9vw, 4rem); letter-spacing: 0.24em;
+      text-wrap: balance; line-height: 1.05; margin-left: 0.24em;
+    }
+    .hero .sub { font-family: var(--sans); font-weight: 300; font-size: clamp(0.75rem, 2.2vw, 0.9rem); letter-spacing: 0.16em; text-transform: uppercase; color: var(--t55); margin-top: 1.4rem; }
+
+    .rule { width: 32px; height: 0.5px; background: var(--t55); margin: clamp(2.4rem, 6vw, 3.4rem) auto; border: 0; }
+
+    p.lede { font-size: clamp(1.15rem, 3vw, 1.4rem); font-weight: 300; line-height: 1.62; color: var(--t72); text-align: center; }
+    p.body { font-size: clamp(1.05rem, 2.6vw, 1.2rem); font-weight: 300; line-height: 1.7; color: var(--t72); }
+    p.body + p.body { margin-top: 1rem; }
+
+    .stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: clamp(1.6rem, 5vw, 2.6rem) 1rem; text-align: center; }
+    .stat .n { font-family: var(--sans); font-weight: 200; font-size: clamp(1.9rem, 6vw, 2.6rem); letter-spacing: 0.02em; font-variant-numeric: tabular-nums; line-height: 1; }
+    .stat .l { font-family: var(--sans); font-weight: 300; font-size: 0.6rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--t40); margin-top: 0.7rem; }
+
+    section { margin-top: clamp(3.2rem, 9vw, 5rem); }
+    .sec-head { text-align: center; margin-bottom: clamp(1.8rem, 5vw, 2.6rem); }
+    h2 { font-family: var(--sans); font-weight: 300; text-transform: uppercase; font-size: clamp(1.2rem, 4vw, 1.6rem); letter-spacing: 0.14em; text-wrap: balance; margin-top: 0.9rem; }
+
+    .case { display: flex; flex-direction: column; gap: 1.6rem; }
+    .beat .k { font-family: var(--sans); font-weight: 400; font-size: 0.62rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--t40); margin-bottom: 0.55rem; }
+
+    .layers { list-style: none; display: flex; flex-direction: column; }
+    .layers li { display: grid; grid-template-columns: minmax(88px, 130px) 1fr; gap: 1rem; padding: 1rem 0; border-top: 0.5px solid var(--t14); align-items: baseline; }
+    .layers li:last-child { border-bottom: 0.5px solid var(--t14); }
+    .layers .lk { font-family: var(--sans); font-weight: 400; font-size: 0.64rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--t55); }
+    .layers .lv { font-family: var(--serif); font-size: clamp(1rem, 2.5vw, 1.12rem); font-weight: 300; line-height: 1.5; color: var(--t72); }
+
+    .skills { display: flex; flex-wrap: wrap; justify-content: center; gap: 0.5rem 0.55rem; }
+    .skills span { font-family: var(--sans); font-weight: 300; font-size: 0.66rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--t55); border: 0.5px solid var(--t14); border-radius: 999px; padding: 0.5rem 0.9rem; }
+
+    .links { margin-top: clamp(3.4rem, 9vw, 5rem); text-align: center; display: flex; flex-direction: column; align-items: center; gap: 1.4rem; }
+    a.primary { font-family: var(--sans); font-weight: 300; font-size: 0.72rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--ink); text-decoration: none; border: 0.5px solid var(--t40); border-radius: 999px; padding: 0.85rem 1.6rem; transition: border-color 0.4s ease; }
+    a.primary:hover { border-color: var(--ink); }
+    .subs { display: flex; flex-wrap: wrap; justify-content: center; gap: 0.4rem 1.2rem; }
+    .subs a { font-family: var(--sans); font-weight: 300; font-size: 0.66rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--t40); text-decoration: none; transition: color 0.4s ease; }
+    .subs a:hover { color: var(--t72); }
+    .copy { font-family: var(--sans); font-weight: 300; font-size: 0.58rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--t22); margin-top: 2.4rem; text-align: center; }
+
+    a:focus-visible, .primary:focus-visible { outline: 1px solid var(--t72); outline-offset: 3px; }
+
+    .d1 { animation-delay: 0.35s; } .d2 { animation-delay: 0.5s; } .d3 { animation-delay: 0.65s; }
+    .d4 { animation-delay: 0.8s; } .d5 { animation-delay: 0.95s; }
+
+    @media (prefers-reduced-motion: reduce) {
+      body, .reveal { animation: none !important; opacity: 1 !important; }
+    }
+    @media (max-width: 460px) {
+      .stats { grid-template-columns: repeat(2, 1fr); }
+      .layers li { grid-template-columns: 1fr; gap: 0.3rem; }
+    }
+  </style>
+</head>
+<body>
+  <canvas id="stars"></canvas>
+
+  <div class="wrap">
+
+    <header class="hero">
+      <p class="eyebrow reveal d1">Network &amp; Infrastructure Engineering</p>
+      <h1 class="reveal d2">NetFRAME</h1>
+      <p class="sub reveal d3">A production-grade homelab &nbsp;·&nbsp; Greater Cleveland, OH</p>
+    </header>
+
+    <p class="lede reveal d4">A seven-node Proxmox cluster I design, operate, and document as if it were a small production environment. Real workloads behind a segmented network, run with production discipline: config-as-code where it counts, monitoring with alerting, disaster-recovery-tested backups, and versioned runbooks.</p>
+
+    <hr class="rule reveal d5" />
+
+    <div class="stats reveal d5">
+      <div class="stat"><div class="n">7</div><div class="l">Proxmox nodes</div></div>
+      <div class="stat"><div class="n">7</div><div class="l">Segmented VLANs</div></div>
+      <div class="stat"><div class="n">40+</div><div class="l">Versioned runbooks</div></div>
+      <div class="stat"><div class="n">3</div><div class="l">Datacenter GPUs</div></div>
+      <div class="stat"><div class="n">~64<span style="font-size:0.5em; letter-spacing:0.1em;"> TiB</span></div><div class="l">ZFS storage</div></div>
+      <div class="stat"><div class="n">24/7</div><div class="l">Dual-UPS power</div></div>
+    </div>
+
+    <section class="reveal">
+      <div class="sec-head">
+        <p class="eyebrow">Featured work</p>
+        <h2>Making the internet fault-tolerant</h2>
+      </div>
+      <div class="case">
+        <div class="beat"><div class="k">Problem</div><p class="body">A single ISP link was a single point of failure for a cluster running DNS, Kubernetes, monitoring, and backups. If the line dropped, everything went dark.</p></div>
+        <div class="beat"><div class="k">Design</div><p class="body">I added a hardwired 5G cellular backup as a second WAN on the OPNsense firewall, with health-based gateway monitoring for automatic failover in under ten seconds and no manual intervention.</p></div>
+        <div class="beat"><div class="k">The catch</div><p class="body">Before touching production, I verified the live firewall configuration through its API and found a leftover subnet alias that would have silently collided with the backup link. I confirmed it was unused through ARP and DHCP checks, then chose the low-risk fix. Measuring twice is what separates a clean change from an outage.</p></div>
+        <div class="beat"><div class="k">Result</div><p class="body">Automatic sub-ten-second failover, upload throughput at near parity with the primary line, zero manual steps, documented as a runbook in git. The next iteration removes the router itself as a single point of failure with a CARP high-availability pair.</p></div>
+      </div>
+    </section>
+
+    <section class="reveal">
+      <div class="sec-head">
+        <p class="eyebrow">The system</p>
+        <h2>Architecture at a glance</h2>
+      </div>
+      <ul class="layers">
+        <li><span class="lk">Network</span><span class="lv">OPNsense firewall, Juniper EX3400 core switch, seven VLANs, self-hosted Headscale mesh VPN.</span></li>
+        <li><span class="lk">Compute</span><span class="lv">Seven Proxmox nodes, including two Dell R730 GPU servers for ML research and LLM inference.</span></li>
+        <li><span class="lk">Storage</span><span class="lv">ZFS on a 24-bay SuperMicro plus a NetApp shelf, with Proxmox Backup Server.</span></li>
+        <li><span class="lk">Kubernetes</span><span class="lv">Three-node HA RKE2 with Cilium, MetalLB, and a private registry on internal TLS.</span></li>
+        <li><span class="lk">Security</span><span class="lv">VLAN segmentation, out-of-band isolation, a Wazuh SIEM, and an internal certificate authority.</span></li>
+        <li><span class="lk">Observability</span><span class="lv">Prometheus and Grafana with alerting to chat, including dead-man's-switch watchdogs.</span></li>
+      </ul>
+    </section>
+
+    <section class="reveal">
+      <div class="sec-head">
+        <p class="eyebrow">Demonstrated</p>
+        <h2>What it proves</h2>
+      </div>
+      <div class="skills">
+        <span>High Availability</span><span>Multi-WAN Failover</span><span>OPNsense</span><span>Proxmox</span><span>Kubernetes / RKE2</span><span>ZFS</span><span>VLAN Segmentation</span><span>Observability</span><span>Config-as-Code</span><span>Disaster Recovery</span>
+      </div>
+    </section>
+
+    <div class="links reveal">
+      <a class="primary" href="https://github.com/machismo0311/Home-Lab" target="_blank" rel="noopener">Full documentation on GitHub &nbsp;&#8599;</a>
+      <div class="subs">
+        <a href="/">kylemason.org</a>
+        <a href="Kyle-Mason-Resume.pdf" target="_blank" rel="noopener">Resume</a>
+        <a href="https://www.linkedin.com/in/kyle-m-468592bb/" target="_blank" rel="noopener">LinkedIn</a>
+      </div>
+      <p class="copy">&copy; 2026 Kyle Mason</p>
+    </div>
+
+  </div>
+
+  <script>
+    const canvas = document.getElementById('stars');
+    const ctx = canvas.getContext('2d');
+    const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    let stars = [];
+    function resize() { canvas.width = window.innerWidth; canvas.height = window.innerHeight; }
+    function init() {
+      stars = [];
+      const count = Math.min(180, Math.floor(window.innerWidth * window.innerHeight / 9000));
+      for (let i = 0; i < count; i++) {
+        stars.push({
+          x: Math.random() * canvas.width,
+          y: Math.random() * canvas.height,
+          r: Math.random() * 0.8 + 0.1,
+          speed: Math.random() * 0.15 + 0.05,
+          opacity: Math.random() * 0.5 + 0.1
+        });
+      }
+    }
+    function frame() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      for (const s of stars) {
+        ctx.beginPath();
+        ctx.arc(s.x, s.y, s.r, 0, Math.PI * 2);
+        ctx.fillStyle = 'rgba(255,255,255,' + s.opacity + ')';
+        ctx.fill();
+        if (!reduce) { s.y -= s.speed; if (s.y < 0) { s.y = canvas.height; s.x = Math.random() * canvas.width; } }
+      }
+      if (!reduce) requestAnimationFrame(frame);
+    }
+    window.addEventListener('resize', () => { resize(); init(); if (reduce) frame(); });
+    resize(); init(); frame();
+  </script>
+</body>
+</html>
