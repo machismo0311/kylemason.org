@@ -72,6 +72,9 @@
     .case { display: flex; flex-direction: column; gap: 1.6rem; }
     .beat .k { font-family: var(--sans); font-weight: 400; font-size: 0.62rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--t40); margin-bottom: 0.55rem; }
 
+    .mini { display: flex; flex-direction: column; gap: 2.2rem; }
+    .mini article h3 { font-family: var(--sans); font-weight: 300; text-transform: uppercase; font-size: clamp(0.95rem, 3vw, 1.12rem); letter-spacing: 0.12em; margin-bottom: 0.8rem; text-wrap: balance; }
+
     .layers { list-style: none; display: flex; flex-direction: column; }
     .layers li { display: grid; grid-template-columns: minmax(88px, 130px) 1fr; gap: 1rem; padding: 1rem 0; border-top: 0.5px solid var(--t14); align-items: baseline; }
     .layers li:last-child { border-bottom: 0.5px solid var(--t14); }
@@ -137,6 +140,23 @@
         <div class="beat"><div class="k">Design</div><p class="body">I added a hardwired 5G cellular backup as a second WAN on the OPNsense firewall, with health-based gateway monitoring for automatic failover in under ten seconds and no manual intervention.</p></div>
         <div class="beat"><div class="k">The catch</div><p class="body">Before touching production, I verified the live firewall configuration through its API and found a leftover subnet alias that would have silently collided with the backup link. I confirmed it was unused through ARP and DHCP checks, then chose the low-risk fix. Measuring twice is what separates a clean change from an outage.</p></div>
         <div class="beat"><div class="k">Result</div><p class="body">Automatic sub-ten-second failover, upload throughput at near parity with the primary line, zero manual steps, documented as a runbook in git. The next iteration removes the router itself as a single point of failure with a CARP high-availability pair.</p></div>
+      </div>
+    </section>
+
+    <section class="reveal">
+      <div class="sec-head">
+        <p class="eyebrow">Also built</p>
+        <h2>Selected work</h2>
+      </div>
+      <div class="mini">
+        <article>
+          <h3>Segmenting a flat network without downtime</h3>
+          <p class="body">Everything, including out-of-band management interfaces, once lived on a single flat network, so one compromised device could reach the BMCs and the whole cluster. I designed and executed a phased migration into seven VLANs: management interfaces to an isolated out-of-band segment, services to their own network, and a management-plane clamp to finish. Each phase was tracked and verified against the firewall's own configuration, and production never dropped. The result is defense in depth with least-privilege reachability, documented as a phased runbook.</p>
+        </article>
+        <article>
+          <h3>A highly available Kubernetes platform</h3>
+          <p class="body">The lab needed a container platform that could survive a node failure and serve GPU and storage workloads, not a single-node toy. I built a three-node highly available RKE2 cluster with a virtual-IP API, Cilium networking, and MetalLB load balancing, then joined the storage host as a tainted bare-metal worker and stood up a private registry backed by an internal certificate authority with automatic TLS renewal. The control plane now tolerates losing a node, persistent volumes are backed by ZFS over NFS, and image pulls are served locally.</p>
+        </article>
       </div>
     </section>
 
