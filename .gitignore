@@ -1,0 +1,28 @@
+# Secrets / credentials - never commit
+.env
+.env.*
+!.env.example
+*.key
+*.pem
+*.p12
+*.pfx
+id_rsa*
+id_ed25519*
+*.age
+credentials.json
+secrets.json
+.secrets/
+
+# Build output / dependencies
+node_modules/
+_site/
+.jekyll-cache/
+dist/
+
+# OS / editor cruft
+.DS_Store
+Thumbs.db
+*~
+*.swp
+.idea/
+.vscode/
