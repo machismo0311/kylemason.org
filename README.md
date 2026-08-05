@@ -1,6 +1,6 @@
 # kylemason.org
 
-Personal website and portfolio for Kyle Mason (USMC veteran, aviation professional transitioning to network engineering; CCNA and MIS in progress).
+Personal website and portfolio for Kyle Mason (USMC infantry veteran and former EMS helicopter instructor pilot, transitioning to network engineering; CCNA and MIS in progress).
 
 Live at **[kylemason.org](https://kylemason.org)**.
 
