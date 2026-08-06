@@ -150,6 +150,10 @@
       </div>
       <div class="mini">
         <article>
+          <h3>Upstream contribution: Prometheus node_exporter</h3>
+          <p class="body">Contributed a fix to the Prometheus node_exporter (<a href="https://github.com/prometheus/node_exporter/pull/3784" target="_blank" rel="noopener">PR&nbsp;#3784</a>, open and under review). The Linux slabinfo collector labelled kernel slab caches only by name, so caches that legitimately share a name, such as one cache per device instance, produced duplicate label sets and the registry rejected the entire metrics scrape. The fix adds an index label following the exporter's existing ordinal convention, assigned after the include/exclude filter so exclusions leave no gaps, with four regression tests, the collector's first dedicated test file, and updated end-to-end fixtures.</p>
+        </article>
+        <article>
           <h3>Segmenting a flat network without downtime</h3>
           <p class="body">Everything, including out-of-band management interfaces, once lived on a single flat network, so one compromised device could reach the BMCs and the whole cluster. I designed and executed a phased migration into seven VLANs: management interfaces to an isolated out-of-band segment, services to their own network, and a management-plane clamp to finish. Each phase was tracked and verified against the firewall's own configuration, and production never dropped. The result is defense in depth with least-privilege reachability, documented as a phased runbook.</p>
         </article>
