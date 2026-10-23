@@ -13,6 +13,7 @@ Live at **[kylemason.org](https://kylemason.org)**.
 | `404.html` | Custom not-found page |
 | `Kyle-Mason-Resume.pdf` | Resume, linked from the site |
 | `robots.txt` | Crawler directives |
+| `sitemap.xml` | Sitemap referenced by `robots.txt` |
 | `CNAME` | Custom domain for GitHub Pages (`kylemason.org`) |
 
 ## How it is built and deployed

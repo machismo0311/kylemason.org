@@ -8,6 +8,7 @@
   <meta property="og:title" content="NetFRAME · Kyle Mason" />
   <meta property="og:description" content="A production-grade 7-node homelab. Network and infrastructure engineering portfolio." />
   <meta property="og:url" content="https://kylemason.org/netframe.html" />
+  <link rel="canonical" href="https://kylemason.org/netframe.html" />
   <meta property="og:type" content="website" />
   <meta name="twitter:card" content="summary" />
   <meta name="twitter:title" content="NetFRAME · Kyle Mason" />
@@ -151,11 +152,11 @@
       <div class="mini">
         <article>
           <h3>Upstream contributions: NASA OpenMDAO</h3>
-          <p class="body">Three fixes merged into <a href="https://github.com/OpenMDAO/OpenMDAO" target="_blank" rel="noopener">OpenMDAO</a>, the NASA-maintained framework for multidisciplinary design optimization (<a href="https://github.com/OpenMDAO/OpenMDAO/pull/3798" target="_blank" rel="noopener">PR&nbsp;#3798</a>, <a href="https://github.com/OpenMDAO/OpenMDAO/pull/3809" target="_blank" rel="noopener">#3809</a>, <a href="https://github.com/OpenMDAO/OpenMDAO/pull/3811" target="_blank" rel="noopener">#3811</a>), each approved on first review with no changes requested. The first closed a concurrency race in problem setup, where parallel MPI processes deleted and recreated the reports directory out from under one another. The other two fixed a quieter numerical defect in the nonlinear solvers: before differentiating by complex step, the solver nudges the whole output vector to force reconvergence, but independent variables are never recomputed, so that nudge survives into the real solution and every total derivative is taken at a shifted point. The error is exactly twice the shift and does not shrink with step size, so it never looks like ordinary numerical noise. The fix excludes independent outputs from both the nudge and the norm that scales it, and ships with regression tests checked against hand-derived derivatives, mutation testing to prove those tests actually fail without the fix, and validation under MPI.</p>
+          <p class="body">Four fixes merged into <a href="https://github.com/OpenMDAO/OpenMDAO" target="_blank" rel="noopener">OpenMDAO</a>, the NASA-maintained framework for multidisciplinary design optimization (<a href="https://github.com/OpenMDAO/OpenMDAO/pull/3798" target="_blank" rel="noopener">PR&nbsp;#3798</a>, <a href="https://github.com/OpenMDAO/OpenMDAO/pull/3809" target="_blank" rel="noopener">#3809</a>, <a href="https://github.com/OpenMDAO/OpenMDAO/pull/3811" target="_blank" rel="noopener">#3811</a>, <a href="https://github.com/OpenMDAO/OpenMDAO/pull/3825" target="_blank" rel="noopener">#3825</a>), each approved on first review with no changes requested. The first closed a concurrency race in problem setup, where parallel MPI processes deleted and recreated the reports directory out from under one another. The next two fixed a quieter numerical defect in the nonlinear solvers: before differentiating by complex step, the solver nudges the whole output vector to force reconvergence, but independent variables are never recomputed, so that nudge survives into the real solution and every total derivative is taken at a shifted point. The error is exactly twice the shift and does not shrink with step size, so it never looks like ordinary numerical noise. The fix excludes independent outputs from both the nudge and the norm that scales it, and ships with regression tests checked against hand-derived derivatives, mutation testing to prove those tests actually fail without the fix, and validation under MPI. The fourth fixed derivatives that came back silently wrong, with no error or warning, when a subgroup approximates its own totals inside a parent that assembles its Jacobian: the parent built its derivative structure before the subgroup's approximated entries existed, so it assembled partials that were never computed.</p>
         </article>
         <article>
           <h3>Upstream contribution: Prometheus node_exporter</h3>
-          <p class="body">Contributed a fix to the Prometheus node_exporter (<a href="https://github.com/prometheus/node_exporter/pull/3784" target="_blank" rel="noopener">PR&nbsp;#3784</a>, open and under review). The Linux slabinfo collector labelled kernel slab caches only by name, so caches that legitimately share a name, such as one cache per device instance, produced duplicate label sets and the registry rejected the entire metrics scrape. The fix adds an index label following the exporter's existing ordinal convention, assigned after the include/exclude filter so exclusions leave no gaps, with four regression tests, the collector's first dedicated test file, and updated end-to-end fixtures.</p>
+          <p class="body">Contributed a fix to the Prometheus node_exporter (<a href="https://github.com/prometheus/node_exporter/pull/3784" target="_blank" rel="noopener">PR&nbsp;#3784</a>, open and under review). The Linux slabinfo collector labeled kernel slab caches only by name, so caches that legitimately share a name, such as one cache per device instance, produced duplicate label sets and the registry rejected the entire metrics scrape. The fix adds an index label following the exporter's existing ordinal convention, assigned after the include/exclude filter so exclusions leave no gaps, with four regression tests, the collector's first dedicated test file, and updated end-to-end fixtures.</p>
         </article>
         <article>
           <h3>Segmenting a flat network without downtime</h3>
@@ -197,7 +198,8 @@
       <a class="primary" href="https://github.com/machismo0311/Home-Lab" target="_blank" rel="noopener">Full documentation on GitHub &nbsp;&#8599;</a>
       <div class="subs">
         <a href="/">kylemason.org</a>
-        <a href="Kyle-Mason-Resume.pdf" target="_blank" rel="noopener">Resume</a>
+        <a href="Kyle-Mason-Resume.pdf" target="_blank" rel="noopener">Résumé</a>
+        <a href="mailto:kyle@kylemason.org">Contact</a>
         <a href="https://www.linkedin.com/in/kyle-m-468592bb/" target="_blank" rel="noopener">LinkedIn</a>
       </div>
       <p class="copy">&copy; 2026 Kyle Mason</p>
